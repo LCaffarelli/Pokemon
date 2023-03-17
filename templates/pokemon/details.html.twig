@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | {{ pokemon.nom }}{% endblock %}
+
+{% block body %}
+    <img src="{{ asset('img/pokemon/'~pokemon.image) }}" alt="image du pokemon">
+
+
+{% endblock %}
+

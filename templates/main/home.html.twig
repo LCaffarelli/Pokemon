@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="imageBG">
+        <div>
+            <a href="{{ path('pokemon_list') }}"><h1 id="titreAccueil">Attrapez les tous !</h1></a>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block title %}{{ parent() }} | Home{% endblock %}
+
