@@ -17,9 +17,18 @@ body {
     font-family: "Pokemon Hollow", sans-serif;
     text-align: justify;
 }
-img{
+
+img {
     max-width: 100%;
+    background: #eee;
+    border-radius: 7px;
+    padding: 20px;
 }
+
+#imgDetails {
+    max-width: 20%;
+}
+
 #titreAccueil {
     position: relative;
     margin-top: 700.44px;
@@ -30,8 +39,12 @@ img{
 
 .pokemon-list {
     display: grid;
-    grid-gap: 10px;
+    justify-content: space-around;
+    grid-gap: 170px;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 
+}
 
+#captured {
+    width: 50px;
 }

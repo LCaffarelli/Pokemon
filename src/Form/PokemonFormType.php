@@ -4,8 +4,10 @@ namespace App\Form;
 
 use App\Entity\Pokemon;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class PokemonFormType extends AbstractType
 {
@@ -17,8 +19,9 @@ class PokemonFormType extends AbstractType
             ->add('attaque')
             ->add('defense')
             ->add('estCapture')
-            ->add('image')
-        ;
+            ->add('image', FileType::class, ['mapped' => false, 'required' => false, 'constraints' => [new File(['maxSize' => '1024k',
+                'mimeTypes' => ['image/jpeg', 'image/png','image/gif','image/svg+xml'], 'mimeTypesMessage' => 'Please upload a valid image'])]]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

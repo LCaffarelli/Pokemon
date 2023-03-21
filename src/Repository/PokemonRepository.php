@@ -39,6 +39,19 @@ class PokemonRepository extends ServiceEntityRepository
         }
     }
 
+    public function triParNom(){
+        $queryBuilder=$this->createQueryBuilder('p');
+        $queryBuilder->OrderBy('p.nom', order: 'Asc');
+        $query=$queryBuilder->getQuery();
+        return $query->getResult();
+    }
+
+    public function triParCapture(){
+        $queryBuilder=$this->createQueryBuilder('p');
+        $queryBuilder->OrderBy('p.estCapture',order: 'DESC' );
+        $query=$queryBuilder->getQuery();
+        return $query->getResult();
+    }
 //    /**
 //     * @return Pokemon[] Returns an array of Pokemon objects
 //     */

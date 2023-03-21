@@ -3,7 +3,22 @@
 {% block title %}{{ parent() }} | {{ pokemon.nom }}{% endblock %}
 
 {% block body %}
-    <img src="{{ asset('img/pokemon/'~pokemon.image) }}" alt="image du pokemon">
+    <img id="imgDetails" src="{{ asset('img/pokemon/'~pokemon.image) }}" alt="image du pokemon">
+    {% if pokemon.estCapture==true %}
+        <img src="{{ asset('img/icon/pokeball-ok.jpg') }}" alt="pokemon capturé"></else>
+    {% endif %}
+    {% if pokemon.estCapture==false %}
+        <img src="{{ asset('img/icon/pokeball-ko.jpg') }}" alt="pokemon non capturé">
+    {% endif %}
+    <h1>{{ pokemon.nom }}</h1>
+    <div>
+        Attaque : {{ pokemon.attaque }}
+        Défense : {{ pokemon.defense }}
+        <p>{{ pokemon.description }}</p>
+    </div>
+    <a href="{{ path('pokemon_list') }}"><button>Retour</button></a>
+
+
 
 
 {% endblock %}

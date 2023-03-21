@@ -2,12 +2,38 @@
 {% block title %}{{ parent() }} | Liste Pokemons {% endblock %}
 
 {% block body %}
+    <div>
+        <a href="{{ path('pokemon_tri', {'param':'nom'}) }}">
+            <button>Trier par nom</button>
+        </a>
+        <a href="{{ path('pokemon_tri',{'param':'capture'}) }}">
+            <button>Trier par Pokemons Capturés</button>
+        </a>
+        <a href="{{ path('pokemon_create') }}">
+            <button>Ajouter un Pokemon</button>
+        </a>
 
+    </div>
     <section class="pokemon-list">
         {% for pokemon in pokemons %}
             <article>
+                {{ pokemon.nom }}
                 <a href="{{ path('pokemon_details',{'id':pokemon.id}) }}"><img
                             src="{{ asset('img/pokemon/'~pokemon.image ) }}" alt="image du pokemon"></a>
+                <div>
+
+                    {% if pokemon.estCapture==true %}
+                        <img id="captured" src="{{ asset('img/icon/pokeball-ok.jpg') }}" alt="pokemon capturé"></else>
+                    {% else %}
+                        <img id="captured" src="{{ asset('img/icon/pokeball-ko.jpg') }}" alt="pokemon non capturé">
+                    {% endif %}
+
+                    {% if pokemon.estCapture %}
+                        <button><a href="{{ path('pokemon_capture', {'id': pokemon.id}) }}">Relacher</a></button>
+                    {% else %}
+                        <button><a href="{{ path('pokemon_capture', {'id': pokemon.id}) }}">Capturer</a></button>
+                    {% endif %}</div>
+
             </article>
 
         {% endfor %}

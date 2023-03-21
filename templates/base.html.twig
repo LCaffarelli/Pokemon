@@ -9,6 +9,11 @@
        <title>{% block title %}Pokemon{% endblock %}</title>
 
     </head>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+        <div class="flash-{{ label }}"></div>{{ message }}
+        {% endfor %}
+    {% endfor %}
     <body>
         {% block body %}{% endblock %}
     </body>
